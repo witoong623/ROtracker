@@ -12,6 +12,13 @@ namespace ROtracker.src
 {
     public partial class MainForm : Form
     {
+        private static void Main()
+        {
+            MainForm main = new MainForm();
+            Application.EnableVisualStyles();
+            Application.Run(main);
+        }
+
         public MainForm()
         {
             InitializeComponent();
