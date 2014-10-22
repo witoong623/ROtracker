@@ -27,7 +27,7 @@ namespace ROtracker.src
             }
         }
 
-        public bool OpenConnection()
+        private bool OpenConnection()
         {
             try
             {
@@ -54,7 +54,7 @@ namespace ROtracker.src
             }
         }
 
-        public void CloseConnection()
+        private void CloseConnection()
         {
             try
             {
@@ -63,6 +63,20 @@ namespace ROtracker.src
             catch (MySqlException ex)
             {
                 MessageBox.Show(ex.Message + ex.StackTrace, ex.Number.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        public bool CanConnect()
+        {
+            if (OpenConnection())
+            {
+                CloseConnection();
+
+                return true;
+            }
+            else
+            {
+                return false;
             }
         }
     }
