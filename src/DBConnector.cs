@@ -69,7 +69,6 @@ namespace ROtracker.src
             if (OpenConnection())
             {
                 CloseConnection();
-
                 return true;
             }
             else
