@@ -28,19 +28,57 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.mnsMenu = new System.Windows.Forms.MenuStrip();
+            this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.testConnectionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnsMenu.SuspendLayout();
             this.SuspendLayout();
+            // 
+            // mnsMenu
+            // 
+            this.mnsMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.fileToolStripMenuItem});
+            this.mnsMenu.Location = new System.Drawing.Point(0, 0);
+            this.mnsMenu.Name = "mnsMenu";
+            this.mnsMenu.Size = new System.Drawing.Size(284, 24);
+            this.mnsMenu.TabIndex = 0;
+            this.mnsMenu.Text = "menuStrip1";
+            // 
+            // fileToolStripMenuItem
+            // 
+            this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.testConnectionToolStripMenuItem});
+            this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
+            this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
+            this.fileToolStripMenuItem.Text = "File";
+            // 
+            // testConnectionToolStripMenuItem
+            // 
+            this.testConnectionToolStripMenuItem.Name = "testConnectionToolStripMenuItem";
+            this.testConnectionToolStripMenuItem.Size = new System.Drawing.Size(159, 22);
+            this.testConnectionToolStripMenuItem.Text = "Test connection";
+            this.testConnectionToolStripMenuItem.Click += new System.EventHandler(this.testConnectionToolStripMenuItem_Click);
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(284, 261);
+            this.Controls.Add(this.mnsMenu);
+            this.MainMenuStrip = this.mnsMenu;
             this.Name = "MainForm";
             this.Text = "ROtracker";
+            this.mnsMenu.ResumeLayout(false);
+            this.mnsMenu.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
+
+        private System.Windows.Forms.MenuStrip mnsMenu;
+        private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem testConnectionToolStripMenuItem;
     }
 }

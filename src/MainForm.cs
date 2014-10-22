@@ -23,5 +23,19 @@ namespace ROtracker.src
         {
             InitializeComponent();
         }
+
+        private void testConnectionToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var myDB = new DBConnector();
+
+            if (myDB.CanConnect())
+            {
+                MessageBox.Show("Can connect to database", "Sucesses to connect", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                MessageBox.Show("Cannot connect to databse", "Cannot connect", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
     }
 }
