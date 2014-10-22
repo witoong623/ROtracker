@@ -41,15 +41,13 @@ namespace ROtracker.src
                     return true;
                 }
             }
-            catch (NullReferenceException)
-            {
-                MessageBox.Show("Cannot open connection because cannot build connection string",
-                    "Cannot build connection string", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return false;
-            }
             catch (MySqlException ex)
             {
                 MessageBox.Show(ex.Message, ex.Number.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+            catch (NullReferenceException)
+            {
                 return false;
             }
         }
