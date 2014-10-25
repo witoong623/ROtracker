@@ -15,5 +15,10 @@ namespace ROtracker
         {
             Database = new DBConnector();
         }
+
+        public RoundDetail[] CalculateNextTime()
+        {
+            return null;
+        }
     }
 }
