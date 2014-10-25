@@ -32,10 +32,11 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <StartupObject>ROtracker.src.MainForm</StartupObject>
+    <StartupObject>ROtracker.MainForm</StartupObject>
   </PropertyGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <Compile Include="src\ROtrackerExtension.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="MySql.Data, Version=6.9.4.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">

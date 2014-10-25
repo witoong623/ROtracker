@@ -7,8 +7,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ROtracker.Extension;
 
-namespace ROtracker.src
+namespace ROtracker
 {
     public partial class MainForm : Form
     {
@@ -22,6 +23,7 @@ namespace ROtracker.src
         public MainForm()
         {
             InitializeComponent();
+            this.Text = "ROtracker : wait boss " + RoundDetail.Count;
         }
 
         private void testConnectionToolStripMenuItem_Click(object sender, EventArgs e)
@@ -34,7 +36,7 @@ namespace ROtracker.src
             }
             else
             {
-                MessageBox.Show("Cannot connect to databse", "Cannot connect", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Cannot connect to databse", "Cannot connect", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
     }

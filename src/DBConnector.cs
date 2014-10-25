@@ -7,7 +7,7 @@ using System.Windows.Forms;
 using MySql.Data.MySqlClient;
 using FileManage;
 
-namespace ROtracker.src
+namespace ROtracker
 {
     class DBConnector
     {
