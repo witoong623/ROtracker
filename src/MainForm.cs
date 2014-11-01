@@ -13,6 +13,9 @@ namespace ROtracker
 {
     public partial class MainForm : Form
     {
+        List<RoundDetail> boss;
+        TimeSupply supply = new TimeSupply();
+
         private static void Main()
         {
             MainForm main = new MainForm();
@@ -23,7 +26,7 @@ namespace ROtracker
         public MainForm()
         {
             InitializeComponent();
-            this.Text = "ROtracker : wait boss " + RoundDetail.Count;
+            // this.Text = "ROtracker : wait boss " + boss.Count;
         }
 
         private void testConnectionToolStripMenuItem_Click(object sender, EventArgs e)
@@ -38,6 +41,11 @@ namespace ROtracker
             {
                 MessageBox.Show("Cannot connect to databse", "Cannot connect", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
+        }
+
+        private void RefreshList()
+        {
+            boss = supply.CalculateNextTime();
         }
     }
 }
