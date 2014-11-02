@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 
 namespace ROtracker.Extension
 {
+    public enum BornStatus { Already, NotYet }
+
     public class RoundDetail
     {
         public string Name { get; private set; }
@@ -15,9 +17,10 @@ namespace ROtracker.Extension
         public DateTime DeadTime { get; private set; }
         public DateTime NextTime { get; private set; }
         public TimeSpan TimeRemaining { get; private set; }
-        public int Hours { get; private set; }
-        public int Minutes { get; private set; }
-        public int Secounds { get; private set; }
+        public int HrRemaining { get; private set; }
+        public int MinRemaining { get; private set; }
+        public int SecRemaining { get; private set; }
+        public BornStatus IsBorn { get; private set; }
 
         public RoundDetail(string name, double interval, DateTime deadTime, string map, int[] cordinate)
         {
@@ -28,9 +31,34 @@ namespace ROtracker.Extension
             Cordinate = cordinate;
             NextTime = DeadTime.AddMinutes(Interval);
             TimeRemaining = NextTime.Subtract(DeadTime);
-            Hours = TimeRemaining.Hours;
-            Minutes = TimeRemaining.Minutes;
-            Secounds = TimeRemaining.Seconds;
+            HrRemaining = TimeRemaining.Hours;
+            MinRemaining = TimeRemaining.Minutes;
+            SecRemaining = TimeRemaining.Seconds;
+            IsBorn = BornStatus.NotYet;
+        }
+
+        public void Countdown()
+        {
+            if (HrRemaining > 0 && MinRemaining > 0)
+            {
+                MinRemaining--;
+                if (MinRemaining == 0)
+                {
+                    HrRemaining--;
+                }
+            }
+            else if (HrRemaining == 0 && MinRemaining > 0)
+            {
+                MinRemaining--;
+            }
+            else if (SecRemaining > 0)
+            {
+                SecRemaining--;
+                if (SecRemaining == 0)
+                {
+                    IsBorn = BornStatus.Already;
+                }
+            }
         }
     }
 }
