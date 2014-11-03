@@ -39,7 +39,7 @@ namespace ROtracker.Extension
 
         public void Countdown()
         {
-            if (HrRemaining > 0 && MinRemaining > 0)
+            if (HrRemaining > 0)
             {
                 MinRemaining--;
                 if (MinRemaining == 0)
@@ -47,11 +47,11 @@ namespace ROtracker.Extension
                     HrRemaining--;
                 }
             }
-            else if (HrRemaining == 0 && MinRemaining > 0)
+            else if (MinRemaining > 0)
             {
                 MinRemaining--;
             }
-            else if (SecRemaining > 0)
+            else
             {
                 SecRemaining--;
                 if (SecRemaining == 0)
