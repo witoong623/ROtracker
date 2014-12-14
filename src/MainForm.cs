@@ -13,8 +13,16 @@ namespace ROtracker
 {
     public partial class MainForm : Form
     {
-        List<RoundDetail> boss;
-        TimeSupply supply = new TimeSupply();
+
+        private List<RoundDetail> eachBoss = new List<RoundDetail>();
+
+        public List<RoundDetail> EachBoss
+        {
+            get
+            {
+                return eachBoss;
+            }
+        }
 
         private static void Main()
         {
@@ -43,9 +51,5 @@ namespace ROtracker
             }
         }
 
-        private void RefreshList()
-        {
-            boss = supply.CalculateNextTime();
-        }
     }
 }

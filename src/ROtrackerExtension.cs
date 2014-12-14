@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Timers;
 using System.Threading.Tasks;
 
 namespace ROtracker.Extension
@@ -12,52 +13,53 @@ namespace ROtracker.Extension
     {
         public string Name { get; private set; }
         public string Map { get; private set; }
-        public double Interval { get; private set; }
-        public int[] Cordinate { get; private set; }
-        public DateTime DeadTime { get; private set; }
-        public DateTime NextTime { get; private set; }
-        public TimeSpan TimeRemaining { get; private set; }
-        public int HrRemaining { get; private set; }
-        public int MinRemaining { get; private set; }
-        public int SecRemaining { get; private set; }
+        public int RespawnInterval;
+        private TimeSpan Interval;
+        private DateTime DeadTime;
+        private DateTime BornTime;
+        public Timer CountDown;
+        private int NotifyCount;
         public BornStatus IsBorn { get; private set; }
 
-        public RoundDetail(string name, double interval, DateTime deadTime, string map, int[] cordinate)
+        public RoundDetail (string name, string map, DateTime deadTime, int respawnInterval)
         {
             Name = name;
-            Interval = interval;
-            DeadTime = deadTime;
             Map = map;
-            Cordinate = cordinate;
-            NextTime = DeadTime.AddMinutes(Interval);
-            TimeRemaining = NextTime.Subtract(DeadTime);
-            HrRemaining = TimeRemaining.Hours;
-            MinRemaining = TimeRemaining.Minutes;
-            SecRemaining = TimeRemaining.Seconds;
-            IsBorn = BornStatus.NotYet;
+            DeadTime = deadTime;
+            RespawnInterval = respawnInterval;
+            BornTime = DeadTime.AddMinutes(RespawnInterval);
+            Interval = BornTime.Subtract(DeadTime);
+            // countdown 15 min remaining, NotifyCount is 0
+            CountDown = new Timer(Interval.Milliseconds - 900000);
+            CountDown.Start();
+            CountDown.Elapsed += new ElapsedEventHandler(NotifyClient);
         }
 
-        public void Countdown()
+        private void NotifyClient(object sender, ElapsedEventArgs e)
         {
-            if (HrRemaining > 0)
+            NotifyCount++;
+
+            if (NotifyCount == 1)
             {
-                MinRemaining--;
-                if (MinRemaining == 0)
-                {
-                    HrRemaining--;
-                }
+                // 5 min remaining, NotifyCount is 1
+                CountDown.Interval = 600000;
             }
-            else if (MinRemaining > 0)
+            else if (NotifyCount == 2)
             {
-                MinRemaining--;
+                // 1 min remaining, NotifyCount is 2
+                CountDown.Interval = 240000;
+            }
+            else if (NotifyCount == 3)
+            {
+                // boss will born in 1 min, NotifyCount is 3
+                CountDown.Interval = 60000;
+
             }
             else
             {
-                SecRemaining--;
-                if (SecRemaining == 0)
-                {
-                    IsBorn = BornStatus.Already;
-                }
+                // End countdown
+                CountDown.Stop();
+                IsBorn = BornStatus.Already;
             }
         }
     }
