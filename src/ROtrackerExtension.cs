@@ -17,11 +17,11 @@ namespace ROtracker.Extension
         private TimeSpan Interval;
         private DateTime DeadTime;
         private DateTime BornTime;
-        public Timer CountDown;
+        public RoundTimer CountDown;
         private int NotifyCount;
         public BornStatus IsBorn { get; private set; }
 
-        public RoundDetail (string name, string map, DateTime deadTime, int respawnInterval)
+        public RoundDetail (string name, string map, DateTime deadTime, int respawnInterval, int order)
         {
             Name = name;
             Map = map;
@@ -30,7 +30,7 @@ namespace ROtracker.Extension
             BornTime = DeadTime.AddMinutes(RespawnInterval);
             Interval = BornTime.Subtract(DeadTime);
             // countdown 15 min remaining, NotifyCount is 0
-            CountDown = new Timer(Interval.Milliseconds - 900000);
+            CountDown = new RoundTimer(Interval.Milliseconds - 900000, order);
             CountDown.Start();
             CountDown.Elapsed += new ElapsedEventHandler(NotifyClient);
         }
@@ -61,6 +61,16 @@ namespace ROtracker.Extension
                 CountDown.Stop();
                 IsBorn = BornStatus.Already;
             }
+        }
+    }
+
+    public class RoundTimer : Timer
+    {
+        public int Order { get; private set; }
+
+        public RoundTimer(double interval, int order) : base(interval)
+        {
+            Order = order;
         }
     }
 }
