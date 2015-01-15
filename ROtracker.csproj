@@ -36,7 +36,15 @@
   </PropertyGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <Compile Include="src\ROtrackerExtension.cs" />
+    <Compile Include="src\AddNewTime.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="src\AddNewTime.Designer.cs">
+      <DependentUpon>AddNewTime.cs</DependentUpon>
+    </Compile>
+    <Compile Include="src\ROtrackerExtension.cs">
+      <SubType>Component</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Reference Include="MySql.Data, Version=6.9.4.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
@@ -49,6 +57,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="src\AddNewTime.resx">
+      <DependentUpon>AddNewTime.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="src\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>

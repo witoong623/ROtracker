@@ -13,8 +13,9 @@ namespace ROtracker
 {
     public partial class MainForm : Form
     {
-
         private List<RoundDetail> eachBoss = new List<RoundDetail>();
+        private System.Timers.Timer Clock = new System.Timers.Timer(60000);
+        private DBConnector myDB;
 
         public List<RoundDetail> EachBoss
         {
@@ -39,7 +40,10 @@ namespace ROtracker
 
         private void testConnectionToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var myDB = new DBConnector();
+            if (myDB == null)
+            {
+                myDB = new DBConnector();
+            }
 
             if (myDB.CanConnect())
             {
@@ -49,6 +53,18 @@ namespace ROtracker
             {
                 MessageBox.Show("Cannot connect to databse", "Cannot connect", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
+        }
+
+        public void AddBossDetail()
+        {
+            
+        }
+
+        private void stmAddNewTime_Click(object sender, EventArgs e)
+        {
+            AddNewTime addNewTimeForm = new AddNewTime();
+            addNewTimeForm.ShowDialog();
+            addNewTimeForm.Dispose();
         }
 
     }

@@ -37,6 +37,7 @@
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.stmAddNewTime = new System.Windows.Forms.ToolStripMenuItem();
             this.mnsMenu.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -53,7 +54,8 @@
             // fileToolStripMenuItem
             // 
             this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.testConnectionToolStripMenuItem});
+            this.testConnectionToolStripMenuItem,
+            this.stmAddNewTime});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
             this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
             this.fileToolStripMenuItem.Text = "File";
@@ -102,6 +104,13 @@
             this.columnHeader4.Text = "Grave Cordinate";
             this.columnHeader4.Width = 91;
             // 
+            // stmAddNewTime
+            // 
+            this.stmAddNewTime.Name = "stmAddNewTime";
+            this.stmAddNewTime.Size = new System.Drawing.Size(159, 22);
+            this.stmAddNewTime.Text = "Add New time";
+            this.stmAddNewTime.Click += new System.EventHandler(this.stmAddNewTime_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -132,5 +141,6 @@
         private System.Windows.Forms.ColumnHeader columnHeader2;
         private System.Windows.Forms.ColumnHeader columnHeader3;
         private System.Windows.Forms.ColumnHeader columnHeader4;
+        private System.Windows.Forms.ToolStripMenuItem stmAddNewTime;
     }
 }
