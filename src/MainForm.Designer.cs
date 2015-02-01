@@ -65,7 +65,7 @@
             this.testConnectionToolStripMenuItem.Name = "testConnectionToolStripMenuItem";
             this.testConnectionToolStripMenuItem.Size = new System.Drawing.Size(159, 22);
             this.testConnectionToolStripMenuItem.Text = "Test connection";
-            this.testConnectionToolStripMenuItem.Click += new System.EventHandler(this.testConnectionToolStripMenuItem_Click);
+            this.testConnectionToolStripMenuItem.Click += new System.EventHandler(this.testConnection_Click);
             // 
             // listView1
             // 

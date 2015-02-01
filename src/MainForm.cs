@@ -38,7 +38,7 @@ namespace ROtracker
             // this.Text = "ROtracker : wait boss " + boss.Count;
         }
 
-        private void testConnectionToolStripMenuItem_Click(object sender, EventArgs e)
+        private void testConnection_Click(object sender, EventArgs e)
         {
             if (myDB == null)
             {
@@ -57,7 +57,9 @@ namespace ROtracker
 
         public void AddBossDetail()
         {
-            
+            AddNewTime newTime = new AddNewTime();
+            newTime.ShowDialog();
+            newTime.Dispose();
         }
 
         private void stmAddNewTime_Click(object sender, EventArgs e)
