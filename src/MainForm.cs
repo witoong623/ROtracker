@@ -57,6 +57,7 @@ namespace ROtracker
 
         public void AddBossDetail()
         {
+            // Test revert
             AddNewTime newTime = new AddNewTime();
             newTime.ShowDialog();
             newTime.Dispose();

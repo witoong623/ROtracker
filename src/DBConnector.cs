@@ -4,8 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Configuration;
 using MySql.Data.MySqlClient;
-using FileManage;
 
 namespace ROtracker
 {
@@ -15,7 +15,8 @@ namespace ROtracker
 
         public DBConnector()
         {
-
+            string connectionString = ConfigurationManager.ConnectionStrings["rotracker"].ConnectionString;
+            Connection = new MySqlConnection(connectionString);
         }
 
         private bool OpenConnection()
