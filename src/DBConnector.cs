@@ -15,16 +15,7 @@ namespace ROtracker
 
         public DBConnector()
         {
-            var buid = new clsBuildConnectionString("sql.txt");
 
-            if (buid.BuildConnectionString())
-            {
-                Connection = new MySqlConnection(buid.ConnectionString);
-            }
-            else
-            {
-                return;
-            }
         }
 
         private bool OpenConnection()
